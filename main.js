@@ -46,6 +46,20 @@ function saveIssue(e) {
     fetchIssues();
   }
 
+  function deleteIssue(id){
+    var issues = JSON.parse(localStorage.getItem('issues'));
+
+    for(var i = 0; i < issues.length;i++){
+        if(issues[i].id == id){
+            issues.splice(i, 1); //remove 1 element from array
+        }
+    }
+
+    localStorage.setItem('issues', JSON.stringify(issues));
+
+    fetchIssues();
+  }
+
 
 function fetchIssues() {
     var issues = JSON.parse(localStorage.getItem('issues'));
