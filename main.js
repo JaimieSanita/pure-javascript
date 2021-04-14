@@ -1,12 +1,13 @@
-document.getElementById('issueInputForm').addEventListener('submit', saveIssue);
+document.getElementById('issueInputForm').addEventListener('submit', saveIssue); //event listener on form to trigger save function
 
 function saveIssue(e) {
-    var issueId = chance.guid();
+    var issueId = chance.guid(); //generate id via chance
     var issueDesc = document.getElementById('issueDescInput').value;
     var issueSeverity = document.getElementById('issueSeverityInput').value;
     var issueAssignedTo = document.getElementById('issueAssignedToInput').value;
     var issueStatus = 'Open';
-    var issue = {
+
+    var issue = { //issue object
       id: issueId,
       description: issueDesc,
       severity: issueSeverity,
@@ -24,9 +25,9 @@ function saveIssue(e) {
       localStorage.setItem('issues', JSON.stringify(issues));
     }
     
-    document.getElementById('issueInputForm').reset();
+    document.getElementById('issueInputForm').reset(); //reset form
    
-    fetchIssues();
+    fetchIssues(); //ensure function called
     
     e.preventDefault(); 
   }
